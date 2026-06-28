@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal - LYETA CLASSIC POS & Inventory</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #f7fafc;
+            margin: 0;
+            padding: 20px 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            border-top: 8px solid #2b6cb0;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #2b6cb0;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #2d3748;
+            font-size: 1.4em;
+            margin-top: 25px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 6px;
+        }
+        h3 {
+            color: #4a5568;
+            font-size: 1.1em;
+            margin-top: 20px;
+            background-color: #ebf8ff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border-left: 4px solid #3182ce;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .meta-table td {
+            padding: 8px;
+            border-bottom: 1px solid #edf2f7;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .meta-table td.label {
+            font-weight: bold;
+            color: #4a5568;
+            padding-bottom: 2px;
+        }
+        .section-block {
+            margin-bottom: 30px;
+        }
+        .content-box {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4a5568;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #a0aec0;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+        .print-btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 20px auto;
+            padding: 12px;
+            background-color: #2b6cb0;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        
+        /* Desktop Screens styling adjustments */
+        @media (min-width: 600px) {
+            body {
+                padding: 40px 20px;
+            }
+            .container {
+                padding: 45px 50px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            .meta-table td {
+                display: table-cell;
+                padding: 10px;
+            }
+            .meta-table td.label {
+                width: 30%;
+                padding-bottom: 10px;
+            }
+            .content-box {
+                font-size: 15px;
+            }
+            ul {
+                font-size: 15px;
+            }
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                border-top: none;
+            }
+            .print-btn {
+                display: none;
+            }
+            .page-break {
+                page-break-before: always;
+                break-before: page;
+            }
+            .content-box {
+                background-color: #ffffff;
+                border-left: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+    <div class="container">
+        <!-- Section 1: Title and Metadata -->
+        <div class="section-block" style="text-align: center;">
+            <h1 style="border: none; margin-bottom: 5px;">PROJECT PROPOSAL</h1>
+            <p style="font-size: 1.1em; color: #718096; margin-top: 0; margin-bottom: 25px;">
+                Sales and Inventory Management System
+            </p>
+            
+            <table class="meta-table">
+                <tr>
+                    <td class="label">Project Title</td>
+                    <td>LYETA CLASSIC - Smart Sales and Real-time Inventory Management System</td>
+                </tr>
+                <tr>
+                    <td class="label">System Architecture</td>
+                    <td>Client-Server (React.js Frontend, Laravel REST API Backend, MySQL DB)</td>
+                </tr>
+                <tr>
+                    <td class="label">Author</td>
+                    <td>Antigravity Software Architect</td>
+                </tr>
+                <tr>
+                    <td class="label">Client</td>
+                    <td>LYETA CLASSIC (Magomeni Street, Dar es Salaam)</td>
+                </tr>
+                <tr>
+                    <td class="label">Version & Date</td>
+                    <td>v1.0 | June 28, 2026</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Section 2: Introduction -->
+        <div class="section-block">
+            <h2>1. Introduction</h2>
+            <div class="content-box">
+                The proposed project outlines the development of a smart web-based Point of Sale (POS) and Real-Time Inventory Management System tailored for LYETA CLASSIC. The system will leverage a modern client-server architecture, using a React.js single-page application frontend and a robust Laravel REST API backend with a MySQL database. This software will modernize sales transactions, automate stock level monitoring, secure system access, and generate precise business analytics.
+            </div>
+        </div>
+
+        <!-- Section 3: Background & Problem Statement -->
+        <div class="section-block">
+            <h2>2. Background & Problem Statement</h2>
+            <div class="content-box">
+                Retail businesses like LYETA CLASSIC face operational challenges due to manual bookkeeping and fragmented cash control. Relying on physical receipts and manual logs creates room for human error, inventory discrepancies, and high audit overheads. Furthermore, the lack of automated database backups poses a severe risk of permanent data loss, while weak authentication increases vulnerability to unauthorized transactions. A centralized, secure, and automated digital ledger is required to address these limitations.
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Section 4: Objectives -->
+        <div class="section-block">
+            <h2>3. Project Objectives</h2>
+            <p style="font-size: 14px;">
+                The primary objective is to implement a dual-panel web system divided into an Admin Control Panel and a Cashier POS Panel. All database operations and sales interfaces will run dynamically in the future.
+            </p>
+
+            <h3>A. Admin Control Panel</h3>
+            <ul>
+                <li><strong>Real-time Dashboard:</strong> Will display widgets showing Daily Sales, Total Capital (Buying Price), Net Profits, and Total Items Sold with dynamic growth charts.</li>
+                <li><strong>Cashier Control:</strong> Will support adding cashiers, resetting passwords, and blocking/unblocking accounts in real-time.</li>
+                <li><strong>Inventory Management:</strong> Will support adding, editing, and deleting items, with Microsoft Excel/CSV bulk import.</li>
+                <li><strong>Backup & Security:</strong> Will support triggering one-click SQL database backup downloads and toggling 2FA globally.</li>
+                <li><strong>Activity Auditing:</strong> Will show immutable log files detailing all actions taken by administrators and cashiers.</li>
+            </ul>
+
+            <div class="page-break"></div>
+
+            <h3>B. Cashier POS Panel</h3>
+            <ul>
+                <li><strong>POS Terminal:</strong> Will allow cashiers to search items by typing names or scanning barcodes, manage a shopping cart, and accept Cash, Bank, or Mobile payment methods.</li>
+                <li><strong>Barcode Label Printer:</strong> Will allow printing auto-generated barcode labels arranged exactly 3-per-row on an A4 sheet.</li>
+                <li><strong>CRM Integration:</strong> Will pre-fill country code <code>+255</code> and enforce a strict 13-character validation for client phone registration.</li>
+                <li><strong>WhatsApp Digital Receipt:</strong> Will compute inclusive 18% VAT and Net Amounts, formatting a monospace receipt layout to send directly to client WhatsApp.</li>
+                <li><strong>Two-Factor Authentication:</strong> Will prompt cashiers for a 6-digit email code upon logging in if enabled.</li>
+                <li><strong>Multi-lingual Support:</strong> Will support one-click toggle between English and Swahili, with a 7-day rotating dashboard theme.</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Section 5: Methodology -->
+        <div class="section-block">
+            <h2>4. Methodology</h2>
+            <div class="content-box">
+                The implementation will follow the Agile software development lifecycle, utilizing iterative sprints:
+                <ul>
+                    <li><strong>Requirements Analysis:</strong> Aligning system layout with client business requirements.</li>
+                    <li><strong>REST API Design:</strong> Building secure Laravel endpoints and MySQL schemas.</li>
+                    <li><strong>Frontend Integration:</strong> Creating React views and establishing state management.</li>
+                    <li><strong>Deployment:</strong> Deploying the local environment and launching on production.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6: System Design -->
+        <div class="section-block">
+            <h2>5. System Design</h2>
+            <div class="content-box">
+                The system will follow a classic 3-tier architecture:
+                <ul>
+                    <li><strong>Client/Presentation Layer:</strong> React.js running in the browser, communicating using JSON.</li>
+                    <li><strong>Application Layer:</strong> Laravel framework managing routing, business rules, and 2FA.</li>
+                    <li><strong>Database Layer:</strong> MySQL storing users, sales, items, customers, and log history.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- Section 7: Expected Benefit -->
+        <div class="section-block">
+            <h2>6. Expected Benefits</h2>
+            <ul>
+                <li><strong>Zero Arithmetic Errors:</strong> Computations for VAT, net profit, and change will be automatic.</li>
+                <li><strong>High Checkout Speed:</strong> Processing transactions will take less than 5 seconds.</li>
+                <li><strong>Security Compliance:</strong> 2FA will safeguard logs and records.</li>
+                <li><strong>Accountability:</strong> Activity logs will document every system transaction.</li>
+                <li><strong>Data Portability:</strong> One-click backups will prevent data loss.</li>
+            </ul>
+        </div>
+
+        <!-- Section 8: Resources Required -->
+        <div class="section-block">
+            <h2>7. Resources Required</h2>
+            <ul>
+                <li><strong>Hardware:</strong> Core i3 or higher PC (8GB RAM), 80mm USB Thermal POS Printer, handheld Barcode Scanner.</li>
+                <li><strong>Software:</strong> Windows 10/11 operating system, XAMPP bundle (PHP 8.2, MySQL 8.0).</li>
+                <li><strong>Connection:</strong> Local Router with stable internet for 2FA emails and WhatsApp receipts.</li>
+            </ul>
+        </div>
+
+        <!-- Section 9: Conclusion -->
+        <div class="section-block">
+            <h2>8. Conclusion</h2>
+            <div class="content-box">
+                The LYETA CLASSIC Smart Sales and Real-time Inventory Management System will represent a crucial milestone in digitalizing the store's retail pipeline. By separating admin controls from sales terminals, securing access through email 2FA, and establishing structured automated backups, the system will optimize operational throughput and protect financial assets. The implementation of this proposal will ensure LYETA CLASSIC is prepared for both local and future international scaling.
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 LYETA CLASSIC. All Rights Reserved. Designed by Antigravity.
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal - Lyeta Classic POS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f7fafc;
+        }
+        .proposal-card {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #2b6cb0;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .header p {
+            color: #718096;
+            margin: 10px 0 0 0;
+            font-size: 16px;
+        }
+        h2 {
+            color: #2c5282;
+            border-left: 4px solid #48bb78;
+            padding-left: 12px;
+            margin-top: 35px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        h3 {
+            color: #2b6cb0;
+            font-size: 16px;
+            margin-top: 25px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 5px;
+        }
+        p, li {
+            font-size: 15px;
+            color: #4a5568;
+            text-align: justify;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .meta-table td {
+            padding: 10px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .meta-table td:first-child {
+            font-weight: bold;
+            color: #4a5568;
+            width: 30%;
+        }
+        .no-print-btn {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 30px auto;
+            padding: 12px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .no-print-btn:hover {
+            background-color: #2c5282;
+        }
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .proposal-card {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            .no-print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="window.print()" class="no-print-btn">Print / Save as PDF</button>
+
+    <div class="proposal-card">
+        <div class="header">
+            <h1>Project Proposal</h1>
+            <p>Smart Retail Sales Management & POS System for Lyeta Classic</p>
+        </div>
+
+        <h2>Project Metadata</h2>
+        <table class="meta-table">
+            <tr>
+                <td>Client Name:</td>
+                <td>Lyeta Classic (Retail & Wholesale Business)</td>
+            </tr>
+            <tr>
+                <td>Project Name:</td>
+                <td>Lyeta Classic Sales & POS System</td>
+            </tr>
+            <tr>
+                <td>Target Industry:</td>
+                <td>General Retail & Wholesale Commerce</td>
+            </tr>
+            <tr>
+                <td>Development Stack:</td>
+                <td>Laravel 11 (Backend), React.js (Frontend), MySQL (Database)</td>
+            </tr>
+            <tr>
+                <td>Proposed Date:</td>
+                <td>June 2026</td>
+            </tr>
+        </table>
+
+        <h2>1. Executive Summary</h2>
+        <p>
+            Lyeta Classic is a growing retail and wholesale business specializing in high-demand consumer goods. As transaction volumes scale, the existing method of manual bookkeeping and offline paper logs poses challenges to accounting efficiency, inventory accuracy, and financial transparency.
+        </p>
+        <p>
+            This proposal outlines the implementation of a custom Sales Management and Point of Sale (POS) system. Designed as a lightweight Single Page Application (SPA), the system features real-time inventory adjustments, automatic stock warning updates, cashier audit trails, thermal receipt configuration, and a custom barcode label generator.
+        </p>
+
+        <h2>2. Problem Statement</h2>
+        <p>
+            Operating without a centralized POS terminal introduces severe business vulnerabilities:
+        </p>
+        <ul>
+            <li><strong>Stock Discrepancy</strong>: Lack of real-time inventory subtraction leads to stock theft, manual check errors, and product shortages.</li>
+            <li><strong>Profit Margins Obscurity</strong>: Net profits are calculated manually at the end of the month, making it difficult to assess day-to-day profit trends.</li>
+            <li><strong>Thermal Receipt Alignment</strong>: Standard browsers inject default headers and footers (such as URLs and page numbers) when printing thermal rolls, making receipts look unprofessional.</li>
+            <li><strong>Customer CRM Limitations</strong>: Customer records, spent histories, and purchase audits are non-existent, preventing effective loyalty promotions.</li>
+        </ul>
+
+        <h2>3. Detailed Panel & Module Analysis</h2>
+        <p>
+            Here is a comprehensive breakdown of the tabs and features implemented inside the two control panels:
+        </p>
+
+        <h2>A. Admin Control Panel (Tab by Tab)</h2>
+
+        <h3>1. Dashboard</h3>
+        <p>
+            The central command center for the business owner. It contains:
+        </p>
+        <ul>
+            <li><strong>Top Metrics</strong>: Three cards displaying "Today's Sales", "Weekly Growth" (percentage change compared to last week), and "Monthly Sales" totals.</li>
+            <li><strong>Weekly Performance Chart</strong>: A visual bar chart representing sales trends over the past 7 days, updating automatically based on calendar dates.</li>
+            <li><strong>Low Stock Alert Grid</strong>: Highlights products whose stock level is critically low. If all stock is above the threshold, it displays a clean "All stock healthy" status.</li>
+            <li><strong>Live Sales Feed</strong>: A real-time log tracking recent purchases, displaying cashier names, payment methods, and timestamps.</li>
+        </ul>
+
+        <h3>2. Cashier Management</h3>
+        <p>
+            A dedicated system panel for managing staff logins. It contains:
+        </p>
+        <ul>
+            <li><strong>Cashier Register Form</strong>: Form to register new cashier profiles (Name, Email, Password).</li>
+            <li><strong>Permit/Block Actions</strong>: Admins can block cashier access instantly or restore permissions.</li>
+            <li><strong>Change Password Form</strong>: Allows admins to override and reset staff credentials.</li>
+        </ul>
+
+        <h3>3. Sales Reports</h3>
+        <p>
+            A historical database of all sales. It offers:
+        </p>
+        <ul>
+            <li><strong>Audited Logs Table</strong>: Lists all checkout logs, payment methods, total amounts, and net profit calculations.</li>
+            <li><strong>Search Filter</strong>: Allows searching logs by customer names or transaction dates.</li>
+        </ul>
+
+        <h3>4. Product Stock Control</h3>
+        <p>
+            The catalog inventory manager. It contains:
+        </p>
+        <ul>
+            <li><strong>Product Register Form</strong>: Form to register products with details such as product name, barcode, stock quantity, buying price, and selling price.</li>
+            <li><strong>Profit Margins Analysis</strong>: Automatically displays calculated profit margins (Selling Price - Buying Price) next to each product.</li>
+        </ul>
+
+        <h3>5. Customer Directory</h3>
+        <p>
+            The customer CRM ledger. Features include:
+        </p>
+        <ul>
+            <li><strong>10-Digit Validation</strong>: Restricts customer phone inputs to exactly 10 digits, showing validation warnings on incorrect formats.</li>
+            <li><strong>Purchase History Modal</strong>: Allows clicking on any customer to view their detailed transaction history, receipt logs, and items bought.</li>
+            <li><strong>Rolling 30-Day Purge</strong>: Auto-deletes profiles older than 30 days to protect customer privacy and maintain database speed.</li>
+        </ul>
+
+        <h3>6. Business Progress Report</h3>
+        <p>
+            A weekly audit compiler. It allows downloading a comprehensive PDF report showing product flow (Stock In, Stock Out, Real Stock) and weekly profit margins over a rolling 7-day cycle.
+        </p>
+
+        <h3>7. Settings & Logins</h3>
+        <p>
+            Allows resetting the admin password, configuring stock warning limits, and downloading barcode label sheets.
+        </p>
+
+        <h2>B. Cashier Control Panel (Tab by Tab)</h2>
+
+        <h3>1. Dashboard</h3>
+        <p>
+            A restricted view showing today's sales metrics, weekly performance charts, and stock warning notifications.
+        </p>
+
+        <h3>2. POS Terminal</h3>
+        <p>
+            The primary sales checkout screen. Features include:
+        </p>
+        <ul>
+            <li><strong>Product Search & Scan</strong>: Cashiers can scan product barcodes or type product names to add items to the cart instantly.</li>
+            <li><strong>Cart Controls</strong>: Adjust quantities, view subtotal, Net Amount (Excl. VAT), VAT (18% inclusive/exclusive), and total spent.</li>
+            <li><strong>Payment & Checkout</strong>: Select payment methods (Cash, Card, Mobile money), input customer phone number, and complete transaction.</li>
+            <li><strong>Receipt Modal</strong>: Toggles printer type profiles (58mm and 80mm rolls) with full-width scaling overrides to prevent margins and browser header/footer leaks.</li>
+        </ul>
+
+        <h3>3. Customer Directory</h3>
+        <p>
+            Allows cashiers to register new customers and view their purchase history.
+        </p>
+
+        <h3>4. Business Progress Report</h3>
+        <p>
+            A read-only progress status tracking the current week's cycle day.
+        </p>
+
+        <h3>5. Barcode Generates</h3>
+        <p>
+            Allows cashiers to select a product, input label quantity (starts blank), and generate scannable PDF/browser-printable barcode label sheets.
+        </p>
+
+        <h2>4. System Integration & Deployment</h2>
+        <p>
+            The backend leverages Laravel's REST API and MySQL's relational integrity. Front-end pages are fully responsive across smartphones, tablets, laptops, and desktop PCs. All local service queries are optimized to guarantee sub-millisecond response rates under XAMPP environments.
+        </p>
+    </div>
+
+</body>
+</html>

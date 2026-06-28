@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendekezo la Mradi - Lyeta Classic POS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f7fafc;
+        }
+        .proposal-card {
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #2b6cb0;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .header p {
+            color: #718096;
+            margin: 10px 0 0 0;
+            font-size: 16px;
+        }
+        h2 {
+            color: #2c5282;
+            border-left: 4px solid #48bb78;
+            padding-left: 12px;
+            margin-top: 35px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        h3 {
+            color: #2b6cb0;
+            font-size: 16px;
+            margin-top: 25px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 5px;
+        }
+        p, li {
+            font-size: 15px;
+            color: #4a5568;
+            text-align: justify;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .meta-table td {
+            padding: 10px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .meta-table td:first-child {
+            font-weight: bold;
+            color: #4a5568;
+            width: 30%;
+        }
+        .no-print-btn {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 30px auto;
+            padding: 12px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .no-print-btn:hover {
+            background-color: #2c5282;
+        }
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .proposal-card {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            .no-print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="window.print()" class="no-print-btn">Chapa / Hifadhi kama PDF</button>
+
+    <div class="proposal-card">
+        <div class="header">
+            <h1>Pendekezo la Mradi (Proposal)</h1>
+            <p>Mfumo wa Kusimamia Mauzo na Stoki (POS) wa Lyeta Classic</p>
+        </div>
+
+        <h2>Maelezo ya Mradi</h2>
+        <table class="meta-table">
+            <tr>
+                <td>Jina la Mteja:</td>
+                <td>Lyeta Classic (Biashara ya Jumla na Rejareja)</td>
+            </tr>
+            <tr>
+                <td>Jina la Mradi:</td>
+                <td>Lyeta Classic Sales & POS System</td>
+            </tr>
+            <tr>
+                <td>Sekta Lengwa:</td>
+                <td>Biashara ya Rejareja na Jumla</td>
+            </tr>
+            <tr>
+                <td>Teknolojia Inayotumika:</td>
+                <td>Laravel 11, React.js, MySQL Database</td>
+            </tr>
+            <tr>
+                <td>Tarehe ya Pendekezo:</td>
+                <td>Juni 2026</td>
+            </tr>
+        </table>
+
+        <h2>1. Muhtasari wa Mradi (Executive Summary)</h2>
+        <p>
+            Lyeta Classic ni biashara inayokua kwa kasi ya uuzaji wa bidhaa za jumla na rejareja. Kutokana na kuongezeka kwa kiwango cha mauzo na bidhaa, matumizi ya kumbukumbu za vitabu vya mkono na risiti za kuandika kwa mkono yanaleta changamoto katika ufanisi, usahihi wa stoki, na uwazi wa faida halisi.
+        </p>
+        <p>
+            Pendekezo hili linaainisha usanifu na utekelezaji wa mfumo maalum, mwepesi, na wenye lugha mbili (Kiswahili na Kiingereza) wa Kusimamia Mauzo na Stoki (POS) kwa ajili ya Lyeta Classic. Mfumo huu unaunganisha usimamizi wa stoki kwa wakati halisi, hesabu ya faida papo hapo, usajili wa wateja, na uwezo wa kuchapa risiti za joto (thermal printing) ili kuzuia upotevu wa mapato na kuboresha huduma kwa wateja.
+        </p>
+
+        <h2>2. Changamoto za Sasa (Problem Statement)</h2>
+        <p>
+            Kwa sasa, duka linaendeshwa bila mfumo wa kiotomatiki wa kufuatilia mauzo, hali inayopelekea changamoto zifuatazo:
+        </p>
+        <ul>
+            <li><strong>Kutojua Kiasi cha Bidhaa Zilizobaki</strong>: Hakuna arifa za kiotomatiki wakati stoki inapungua, na kupelekea bidhaa kuisha ghafla stoo bila taarifa.</li>
+            <li><strong>Ucheleweshaji wa Ripoti za Fedha</strong>: Kuhesabu mauzo na faida ya kila siku, kila wiki, na kila mwezi kwa kutumia vikokotoo vya mikono kunachukua muda mrefu na kuna makosa mengi.</li>
+            <li><strong>Uandishi wa Risiti</strong>: Risiti za kuandika kwa mkono hazionekani kuwa za kitaalamu na haziwezi kuchapishwa haraka kwenye mashine za risiti (thermal printers).</li>
+            <li><strong>Kutojua Thamani ya Wateja</strong>: Kukosekana kwa rejista ya wateja kunafanya iwe vigumu kujua wateja waaminifu wanaonunua kwa wingi ili kuwapa zawadi au punguzo.</li>
+        </ul>
+
+        <h2>3. Ufafanuzi wa Paneli na Vipengele vya Mfumo (Detailed Module Analysis)</h2>
+        <p>
+            Hapa kuna mchanganuo wa kina wa kila tab na kipengele kilichopo kwenye paneli zote mbili za mfumo:
+        </p>
+
+        <h2>A. Paneli ya Kudhibiti ya Admin (Admin Control Panel)</h2>
+
+        <h3>1. Dashboard</h3>
+        <p>
+            Kituo kikuu cha usimamizi wa biashara kwa ajili ya mmiliki. Kinaonyesha:
+        </p>
+        <ul>
+            <li><strong>Kadi za Takwimu</strong>: Kadi tatu zinazoonyesha "Mauzo ya Leo", "Kasi ya Ukuaji kwa Wiki" (asilimia inayolinganisha mauzo ya wiki hii na wiki iliyopita), na "Mauzo ya Mwezi".</li>
+            <li><strong>Chati ya Wiki (Weekly Sales Graph)</strong>: Grafu ya miraba inayofuatilia ukuaji na mwenendo wa mauzo kwa siku 7 zilizopita, ikisasisha tarehe zake automatic.</li>
+            <li><strong>Arifa za Kupungua kwa Bidhaa (Low Stock Alerts)</strong>: Sehemu inayomulika bidhaa ambazo zimebaki chache stoo ili kuagiza nyingine. Bidhaa zote zikiwa salama, inaonyesha "All stock healthy".</li>
+            <li><strong>Live Sales Feed</strong>: Orodha ya mauzo yanayofanyika kwa wakati huo huo, ikionyesha jina la bidhaa, muda, cashier aliyefanya mauzo, na njia ya malipo.</li>
+        </ul>
+
+        <h3>2. Cashier Management (Usimamizi wa Cashier)</h3>
+        <p>
+            Sehemu ya usimamizi wa wafanyakazi na logins zao. Inajumuisha:
+        </p>
+        <ul>
+            <li><strong>Fomu ya Kusajili Cashier</strong>: Usajili wa cashier mpya kwa kuweka jina, barua pepe, na nenosiri (password).</li>
+            <li><strong>Kuzuia / Kuruhusu Cashier (Block/Permit Access)</strong>: Admin anaweza kumzuia cashier asiingie kwenye mfumo kwa kubonyeza kitufe kimoja.</li>
+            <li><strong>Kubadilisha Password ya Cashier</strong>: Inaruhusu admin kubadilisha au kuweka password mpya kwa cashier.</li>
+        </ul>
+
+        <h3>3. Sales Reports (Ripoti za Mauzo)</h3>
+        <p>
+            Kanzidata ya mauzo yote ya duka ambapo admin anaweza kufanya yafuatayo:
+        </p>
+        <ul>
+            <li><strong>Jedwali la Mauzo yote</strong>: Kuona namba ya risiti, jina la cashier, kiasi kilicholipwa, faida halisi iliyopatikana kutokana na mauzo hayo, na njia ya malipo.</li>
+            <li><strong>Utafutaji (Search)</strong>: Kutafuta ripoti ya mauzo kwa kuandika jina la mteja au tarehe husika.</li>
+        </ul>
+
+        <h3>4. Product Stock Control (Usimamizi wa Bidhaa na Stoki)</h3>
+        <p>
+            Sehemu ya kusimamia orodha ya bidhaa zilizopo dukani:
+        </p>
+        <ul>
+            <li><strong>Fomu ya Kuingiza Bidhaa Mpya</strong>: Kuweka jina la bidhaa, barcode, kiasi cha stoki, bei ya kununulia na bei ya kuuzia.</li>
+            <li><strong>Mchanganuo wa Faida (Estimated Profit Margin)</strong>: Mfumo unakokotoa na kuonyesha faida itakayopatikana kwa kila bidhaa (Bei ya Kuuzia - Bei ya Kununulia) moja kwa moja kwenye jedwali.</li>
+        </ul>
+
+        <h3>5. Customer Directory (Rejista ya Wateja)</h3>
+        <p>
+            Sehemu ya CRM ya wateja. Vipengele vyake ni:
+        </p>
+        <ul>
+            <li><strong>Uthibitisho wa Namba ya Simu</strong>: Inazuia kusajili mteja kama namba yake ya simu haijatimiza tarakimu 10 pekee, na kutoa tahadhari ya namba ya simu.</li>
+            <li><strong>Historia ya Manunuzi (Purchase History Modal)</strong>: Kubonyeza jina la mteja ili kuona risiti zake zote za nyuma, tarehe, na orodha ya bidhaa alizonunua.</li>
+            <li><strong>Kufuta data kila baada ya mwezi 1</strong>: Mfumo unafuta wateja waliokaa zaidi ya siku 30 moja kwa moja ili kuuweka mfumo ukiwa mwepesi na kulinda faragha zao.</li>
+        </ul>
+
+        <h3>6. Business Progress Report (Ripoti ya Maendeleo ya Wiki)</h3>
+        <p>
+            Ripoti ya jumla inayomruhusu admin kupakua ripoti ya maendeleo ya mzunguko wa wiki (PDF) iliyo na jedwali la mzunguko wa mzigo (Stock In, Stock Out, Real Stock) na faida.
+        </p>
+
+        <h3>7. Settings & Logins (Mipangilio)</h3>
+        <p>
+            Sehemu ya kubadilisha password ya admin, kuona arifa za bidhaa zilizoisha, na kufanya makadirio ya stoki.
+        </p>
+
+        <h2>B. Paneli ya Cashier (Cashier Control Panel)</h2>
+
+        <h3>1. Dashboard</h3>
+        <p>
+            Toleo lililopunguzwa maelezo likionyesha takwimu za mauzo ya cashier huyo kwa leo, chati ya wiki, na arifa za stoki chache.
+        </p>
+
+        <h3>2. POS Terminal (Sehemu ya Uuzaji)</h3>
+        <p>
+            Ukurasa mkuu wa kufanya mauzo:
+        </p>
+        <ul>
+            <li><strong>Kuscan Barcode na Kutafuta</strong>: Cashier anaweza kuscan kibandiko cha bidhaa au kuandika jina lake ili kuiongeza kwenye kikapu cha mauzo.</li>
+            <li><strong>Kokotoo la Kodi (VAT Calculator)</strong>: Mfumo unahesabu VAT (18% inclusive/exclusive), Net Amount, na Total Spent kiotomatiki wakati wa mauzo.</li>
+            <li><strong>Kukamilisha Mauzo</strong>: Kuchagua njia ya malipo (Cash, Card, Mobile money), kuingiza namba ya simu ya mteja, na kumaliza mauzo.</li>
+            <li><strong>Uchapishaji wa Risiti</strong>: Kufungua risiti ya thermal iliyo na nembo ya "LYETA CLASSIC", kuweka wasifu wa printa (58mm au 80mm), ambapo mfumo unajipanga kutoshea upana wa karatasi bila kuonyesha anwani za tovuti na tarehe za browser.</li>
+        </ul>
+
+        <h3>3. Customer Directory (Rejista ya Wateja)</h3>
+        <p>
+            Inamruhusu cashier kusajili wateja wapya na kuona historia ya manunuzi yao.
+        </p>
+
+        <h3>4. Business Progress Report (Ripoti ya Maendeleo)</h3>
+        <p>
+            Sehemu ya kuona tu hali ya mzunguko wa siku za wiki (kutoka siku ya 1 hadi ya 7) bila uwezo wa kudownload ripoti ya admin.
+        </p>
+
+        <h3>5. Barcode Generates (Tengeneza Barcode)</h3>
+        <p>
+            Ukurasa unaomruhusu cashier kuchagua bidhaa, kuweka idadi (inapoanza inakuwa tupu bila kuandikwa namba ili cashier ajaze mwenyewe), na kuchapa vibandiko vya barcode (Code 39) kwa ajili ya kubandika kwenye bidhaa zisizo na barcode.
+        </p>
+
+        <h2>4. Usanifu wa Mfumo na Teknolojia</h2>
+        <p>
+            Injini ya nyuma inatumia Laravel REST API na ulinzi wa database ya MySQL. Kurasa zote zimeundwa kwa React.js na zinasomeka vizuri kwenye simu za mkononi, tablet, laptop, na kompyuta za mezani.
+        </p>
+    </div>
+
+</body>
+</html>
