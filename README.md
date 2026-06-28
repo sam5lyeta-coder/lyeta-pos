@@ -93,7 +93,4 @@ npm install
    ```
 3. Access the application in your browser at `http://127.0.0.1:8000` or through XAMPP's Apache alias directory path `http://localhost/sales-management-system/public/`.
 
----
 
-## Licensing & Copyright
-&copy; 2026 LYETA CLASSIC. All Rights Reserved. Created by Antigravity Software Architect.
