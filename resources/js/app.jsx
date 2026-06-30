@@ -2601,7 +2601,7 @@ function MainApp() {
                             </table>
 
                             {/* Sehemu ya CEO Kusaini Katikati ya Document */}
-                            <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+                            <div style={{ marginTop: '110px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                                 <div style={{ width: '220px', borderBottom: '1px solid #1a1a1a', marginBottom: '8px' }}></div>
                                 <span style={{ fontSize: '13px', fontWeight: 'bold', letterSpacing: '1px', color: '#2d3748', textTransform: 'uppercase' }}>
                                     CEO
