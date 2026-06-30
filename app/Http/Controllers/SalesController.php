@@ -67,9 +67,10 @@ class SalesController extends Controller
             $stockReport = []; // Group A: Bidhaa zisizofanyiwa restock na zisizo na low alerts
             $stockUpdatesList = []; // Group B: Bidhaa zilizofanyiwa restocks wiki hii
 
-            // Kupata restocks zote za wiki hii
+            // Kupata restocks zote za wiki hii zikiwa zimepangwa kwa tarehe (ascending)
             $weeklyUpdates = DB::table('stock_updates')
                 ->whereBetween('created_at', [$startOfWeek . ' 00:00:00', $endOfWeek . ' 23:59:59'])
+                ->orderBy('created_at', 'asc')
                 ->get();
 
             foreach ($products as $product) {
@@ -90,8 +91,20 @@ class SalesController extends Controller
                 }
 
                 if ($productUpdates->count() > 0) {
-                    // Group B: Bidhaa zilizo na restocks wiki hii
+                    // Group B: Bidhaa zilizo na restocks wiki hii (zinahesabiwa kwa mzunguko wa interval)
+                    $previousStock = $initialStock;
                     foreach ($productUpdates as $update) {
+                        $oldStock = (int)$update->old_stock;
+                        $addedStock = (int)$update->added_stock;
+                        $newStock = (int)$update->new_stock;
+
+                        // Ikiwa kuna upishano wa stoo kabla ya hapo, weka old_stock kama msingi
+                        if ($oldStock > $previousStock) {
+                            $previousStock = $oldStock;
+                        }
+
+                        $intervalStockOut = $previousStock - $oldStock;
+
                         $startDate = \Carbon\Carbon::parse($startOfWeek);
                         $updateDate = \Carbon\Carbon::parse($update->created_at);
                         $diffInDays = $startDate->diffInDays($updateDate) + 1;
@@ -103,12 +116,14 @@ class SalesController extends Controller
                             'product_name'  => $update->product_name,
                             'cycle_day'     => $diffInDays,
                             'date'          => $updateDate->toDateString(),
-                            'initial_stock' => (int)$initialStock,
-                            'stock_out'     => (int)$stockOut,
-                            'remain_stock'  => (int)$update->old_stock,
-                            'added_stock'   => (int)$update->added_stock,
-                            'real_stock'    => (int)$update->new_stock
+                            'initial_stock' => $previousStock,
+                            'stock_out'     => $intervalStockOut,
+                            'remain_stock'  => $oldStock,
+                            'added_stock'   => $addedStock,
+                            'real_stock'    => $newStock
                         ];
+
+                        $previousStock = $newStock;
                     }
                 } else {
                     // Group A: Bidhaa zisizofanyiwa restock na zisizo na low alerts
