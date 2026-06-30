@@ -168,6 +168,7 @@ function MainApp() {
     const [selectedGoogleEmail, setSelectedGoogleEmail] = useState('');
     const [googlePassword, setGooglePassword] = useState('');
     const [customers, setCustomers] = useState([]);
+    const [downloadTimestamp, setDownloadTimestamp] = useState('');
     const [selectedCustomerId, setSelectedCustomerId] = useState('');
     const [newCustomerName, setNewCustomerName] = useState('');
     const [newCustomerPhone, setNewCustomerPhone] = useState('+255');
@@ -2437,25 +2438,34 @@ function MainApp() {
                                 className="no-print-btn" 
                                 disabled={false}
                                 onClick={() => {
-                                    const element = document.getElementById('printable-report-area');
-                                    element.style.display = 'block';
-                                    
-                                    const opt = {
-                                        margin:       0.5,
-                                        filename:     `Business_Progress_Report_Day_${currentCycleDay}_${todayStr}.pdf`,
-                                        image:        { type: 'jpeg', quality: 0.98 },
-                                        html2canvas:  { scale: 2, useCORS: true },
-                                        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                                    };
-                                    
-                                    html2pdf().set(opt).from(element).save().then(() => {
-                                        element.style.display = 'none';
-                                        setPdfDownloaded(true);
-                                    }).catch(err => {
-                                        console.error(err);
-                                        element.style.display = 'none';
-                                        alert("Kuna hitilafu ilitokea wakati wa kupakua PDF. Jaribu tena!");
-                                    });
+                                    const now = new Date();
+                                    const dateStr = now.toLocaleDateString();
+                                    const timeStr = now.toLocaleTimeString();
+                                    const fullTimestamp = `${dateStr} ${timeStr}`;
+                                    setDownloadTimestamp(fullTimestamp);
+
+                                    // Wait a short moment for state to render inside PDF DOM before printing
+                                    setTimeout(() => {
+                                        const element = document.getElementById('printable-report-area');
+                                        element.style.display = 'block';
+                                        
+                                        const opt = {
+                                            margin:       0.4,
+                                            filename:     `Business_Progress_Report_Day_${currentCycleDay}_${todayStr}.pdf`,
+                                            image:        { type: 'jpeg', quality: 0.98 },
+                                            html2canvas:  { scale: 2, useCORS: true },
+                                            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+                                        };
+                                        
+                                        html2pdf().set(opt).from(element).save().then(() => {
+                                            element.style.display = 'none';
+                                            setPdfDownloaded(true);
+                                        }).catch(err => {
+                                            console.error(err);
+                                            element.style.display = 'none';
+                                            alert("Kuna hitilafu ilitokea wakati wa kupakua PDF. Jaribu tena!");
+                                        });
+                                    }, 100);
                                 }} 
                                 style={{ 
                                     padding: '14px 35px', 
@@ -2532,7 +2542,14 @@ function MainApp() {
                                 </tbody>
                             </table>
 
-                            <h3 style={{ margin: '0 0 15px 0', fontSize: '15px', color: '#c53030', textTransform: 'uppercase', borderBottom: '2px solid #e53e3e', paddingBottom: '5px', fontWeight: 'bold' }}>
+                            {/* Page 1 Footer and Page Break */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#718096', borderTop: '1px solid #cbd5e0', paddingTop: '10px', marginTop: '20px' }}>
+                                <span>{lang === 'sw' ? 'Muda wa kupakua' : 'Downloaded at'}: {downloadTimestamp}</span>
+                                <span>{lang === 'sw' ? 'Ukurasa 1 wa 2' : 'Page 1 of 2'}</span>
+                            </div>
+                            <div style={{ pageBreakBefore: 'always', breakBefore: 'page' }}></div>
+
+                            <h3 style={{ margin: '30px 0 15px 0', fontSize: '15px', color: '#c53030', textTransform: 'uppercase', borderBottom: '2px solid #e53e3e', paddingBottom: '5px', fontWeight: 'bold' }}>
                                 {lang === 'sw' ? "JEDWALI B: NYONGEZA YA STOKI NA ARIFA (PRODUCTS ADDED / ALERT FLOW)" : "TABLE B: PRODUCT STOCK ADDITIONS & ALERT FLOW"}
                             </h3>
 
@@ -2576,7 +2593,7 @@ function MainApp() {
                             </table>
 
                             {/* Sehemu ya CEO Kusaini Katikati ya Document */}
-                            <div style={{ marginTop: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+                            <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                                 <div style={{ width: '220px', borderBottom: '1px solid #1a1a1a', marginBottom: '8px' }}></div>
                                 <span style={{ fontSize: '13px', fontWeight: 'bold', letterSpacing: '1px', color: '#2d3748', textTransform: 'uppercase' }}>
                                     CEO
@@ -2584,6 +2601,12 @@ function MainApp() {
                                 <span style={{ fontSize: '11px', color: '#718096', marginTop: '2px' }}>
                                     LYETA CLASSIC ENTERPRISE
                                 </span>
+                            </div>
+
+                            {/* Page 2 Footer */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#718096', borderTop: '1px solid #cbd5e0', paddingTop: '10px', marginTop: '40px' }}>
+                                <span>{lang === 'sw' ? 'Muda wa kupakua' : 'Downloaded at'}: {downloadTimestamp}</span>
+                                <span>{lang === 'sw' ? 'Ukurasa 2 wa 2' : 'Page 2 of 2'}</span>
                             </div>
                         </div>
                     </div>
