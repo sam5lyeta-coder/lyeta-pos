@@ -2457,7 +2457,16 @@ function MainApp() {
                                             jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
                                         };
                                         
-                                        html2pdf().set(opt).from(element).save().then(() => {
+                                        html2pdf().set(opt).from(element).toPdf().get('pdf').then(pdf => {
+                                            const totalPages = pdf.internal.getNumberOfPages();
+                                            for (let i = 1; i <= totalPages; i++) {
+                                                pdf.setPage(i);
+                                                pdf.setFontSize(9);
+                                                pdf.setTextColor(113, 128, 150); // #718096 grey
+                                                // Center page number at the bottom of the page
+                                                pdf.text(i.toString(), pdf.internal.pageSize.getWidth() / 2, pdf.internal.pageSize.getHeight() - 0.35, { align: 'center' });
+                                            }
+                                        }).save().then(() => {
                                             element.style.display = 'none';
                                             setPdfDownloaded(true);
                                         }).catch(err => {
@@ -2499,7 +2508,7 @@ function MainApp() {
                                     {lang === 'sw' ? "RIPOTI YA MAENDELEO YA BIASHARA YA WIKI" : "WEEKLY BUSINESS PROGRESS REPORT"}
                                 </p>
                                 <p style={{ margin: 0, fontSize: '12px', color: '#718096' }}>
-                                    <strong>{lang === 'sw' ? 'Tarehe ya Ripoti' : 'Report Date'}:</strong> {todayStr} | <strong>{lang === 'sw' ? 'Mzunguko' : 'Cycle'}:</strong> {lang === 'sw' ? `Siku ya ${currentCycleDay} ya Mzunguko (Siku 1 - 7)` : `Day ${currentCycleDay} of Cycle (Days 1 - 7)`}
+                                    <strong>{lang === 'sw' ? 'Tarehe' : 'Date'}:</strong> {todayStr} | <strong>{lang === 'sw' ? 'Mzunguko' : 'Cycle'}:</strong> {lang === 'sw' ? `Siku ya ${currentCycleDay} ya Mzunguko (Siku 1 - 7)` : `Day ${currentCycleDay} of Cycle (Days 1 - 7)`} | <strong>{lang === 'sw' ? 'Muda' : 'Downloaded'}:</strong> {downloadTimestamp}
                                 </p>
                             </div>
                             
@@ -2542,14 +2551,7 @@ function MainApp() {
                                 </tbody>
                             </table>
 
-                            {/* Page 1 Footer and Page Break */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#718096', borderTop: '1px solid #cbd5e0', paddingTop: '10px', marginTop: '20px' }}>
-                                <span>{lang === 'sw' ? 'Muda wa kupakua' : 'Downloaded at'}: {downloadTimestamp}</span>
-                                <span>{lang === 'sw' ? 'Ukurasa 1 wa 2' : 'Page 1 of 2'}</span>
-                            </div>
-                            <div style={{ pageBreakBefore: 'always', breakBefore: 'page' }}></div>
-
-                            <h3 style={{ margin: '30px 0 15px 0', fontSize: '15px', color: '#c53030', textTransform: 'uppercase', borderBottom: '2px solid #e53e3e', paddingBottom: '5px', fontWeight: 'bold' }}>
+                            <h3 style={{ margin: '35px 0 15px 0', fontSize: '15px', color: '#c53030', textTransform: 'uppercase', borderBottom: '2px solid #e53e3e', paddingBottom: '5px', fontWeight: 'bold' }}>
                                 {lang === 'sw' ? "JEDWALI B: NYONGEZA YA STOKI NA ARIFA (PRODUCTS ADDED / ALERT FLOW)" : "TABLE B: PRODUCT STOCK ADDITIONS & ALERT FLOW"}
                             </h3>
 
@@ -2601,12 +2603,6 @@ function MainApp() {
                                 <span style={{ fontSize: '11px', color: '#718096', marginTop: '2px' }}>
                                     LYETA CLASSIC ENTERPRISE
                                 </span>
-                            </div>
-
-                            {/* Page 2 Footer */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#718096', borderTop: '1px solid #cbd5e0', paddingTop: '10px', marginTop: '40px' }}>
-                                <span>{lang === 'sw' ? 'Muda wa kupakua' : 'Downloaded at'}: {downloadTimestamp}</span>
-                                <span>{lang === 'sw' ? 'Ukurasa 2 wa 2' : 'Page 2 of 2'}</span>
                             </div>
                         </div>
                     </div>
