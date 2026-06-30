@@ -2450,7 +2450,7 @@ function MainApp() {
                                         element.style.display = 'block';
                                         
                                         const opt = {
-                                            margin:       0.4,
+                                            margin:       [0.5, 0.4, 0.6, 0.4],
                                             filename:     `Business_Progress_Report_Day_${currentCycleDay}_${todayStr}.pdf`,
                                             image:        { type: 'jpeg', quality: 0.98 },
                                             html2canvas:  { scale: 2, useCORS: true },
@@ -2463,8 +2463,8 @@ function MainApp() {
                                                 pdf.setPage(i);
                                                 pdf.setFontSize(9);
                                                 pdf.setTextColor(113, 128, 150); // #718096 grey
-                                                // Center page number at the bottom of the page
-                                                pdf.text(i.toString(), pdf.internal.pageSize.getWidth() / 2, pdf.internal.pageSize.getHeight() - 0.35, { align: 'center' });
+                                                // Center page number at the bottom of the page, safely within bottom margin
+                                                pdf.text(i.toString(), pdf.internal.pageSize.getWidth() / 2, pdf.internal.pageSize.getHeight() - 0.3, { align: 'center' });
                                             }
                                         }).save().then(() => {
                                             element.style.display = 'none';
@@ -2500,6 +2500,12 @@ function MainApp() {
 
                         {/* AREA INAYOOKOTOA NA KUCHORA JEDWALI SAFARI HII NDANI YA PDF TU PALE UNAPOPRINT */}
                         <div id="printable-report-area" style={{ display: 'none', textAlign: 'left', color: '#000', padding: '30px', fontFamily: 'sans-serif' }}>
+                            <style>{`
+                                #printable-report-area tr {
+                                    page-break-inside: avoid !important;
+                                    break-inside: avoid !important;
+                                }
+                            `}</style>
                             <div style={{ textAlign: 'center', borderBottom: '3px double #1a1a1a', paddingBottom: '15px', marginBottom: '25px' }}>
                                 <h1 style={{ margin: '0 0 5px 0', fontSize: '28px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase' }}>
                                     LYETA CLASSIC
