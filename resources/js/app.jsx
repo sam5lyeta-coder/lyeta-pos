@@ -3,6 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 
+// Interceptor ya Axios kutambua base URL ya mradi kiotomatiki (Dynamic Base Path Detection)
+axios.interceptors.request.use(config => {
+    if (config.url && config.url.includes('/sales-management-system/public')) {
+        const path = window.location.pathname;
+        const publicIndex = path.indexOf('/public');
+        const detectedBase = publicIndex !== -1 ? path.substring(0, publicIndex + 7) : '';
+        config.url = config.url.replace('/sales-management-system/public', detectedBase);
+    }
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+
 const getCode39Pattern = (char) => {
     const alphabet = {
         '0': '000110100', '1': '100100001', '2': '001100001', '3': '101100000',
