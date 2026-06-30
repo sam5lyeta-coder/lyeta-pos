@@ -2435,14 +2435,14 @@ function MainApp() {
                         <div style={{ padding: '30px 20px', border: '1px dashed #cbd5e0', borderRadius: '6px', backgroundColor: '#f7fafc', display: 'inline-block', width: '100%', maxWidth: '500px' }}>
                             <button 
                                 className="no-print-btn" 
-                                disabled={!isReportDownloadAllowed}
+                                disabled={false}
                                 onClick={() => {
                                     const element = document.getElementById('printable-report-area');
                                     element.style.display = 'block';
                                     
                                     const opt = {
                                         margin:       0.5,
-                                        filename:     `Business_Weekly_Report_${todayStr}.pdf`,
+                                        filename:     `Business_Progress_Report_Day_${currentCycleDay}_${todayStr}.pdf`,
                                         image:        { type: 'jpeg', quality: 0.98 },
                                         html2canvas:  { scale: 2, useCORS: true },
                                         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -2459,22 +2459,20 @@ function MainApp() {
                                 }} 
                                 style={{ 
                                     padding: '14px 35px', 
-                                    backgroundColor: isReportDownloadAllowed ? '#e53e3e' : '#cbd5e0', 
+                                    backgroundColor: '#e53e3e', 
                                     color: '#fff', 
                                     border: 'none', 
                                     borderRadius: '4px', 
-                                    cursor: isReportDownloadAllowed ? 'pointer' : 'not-allowed', 
+                                    cursor: 'pointer', 
                                     fontWeight: 'bold', 
                                     fontSize: '15px', 
                                     textTransform: 'uppercase', 
                                     letterSpacing: '0.5px' 
                                 }}
                             >
-                                {isReportDownloadAllowed 
-                                    ? (lang === 'sw' ? "Download Report PDF (Wiki imekamilika)" : "Download Report PDF (Week Complete)") 
-                                    : (lang === 'sw' 
-                                        ? `Hujafikia mwisho wa wiki (Inaruhusiwa Siku ya 7 kuanzia saa 5:00 usiku hadi saa 5:59 usiku pekee)` 
-                                        : `Locked until Day 7 (From 11:00 PM to 11:59 PM only)`)
+                                {lang === 'sw' 
+                                    ? `Download Report PDF (Siku ya ${currentCycleDay} ya Mzunguko)` 
+                                    : `Download Report PDF (Day ${currentCycleDay} of Cycle)`
                                 }
                             </button>
                         </div>
@@ -2491,7 +2489,7 @@ function MainApp() {
                                     {lang === 'sw' ? "RIPOTI YA MAENDELEO YA BIASHARA YA WIKI" : "WEEKLY BUSINESS PROGRESS REPORT"}
                                 </p>
                                 <p style={{ margin: 0, fontSize: '12px', color: '#718096' }}>
-                                    <strong>{lang === 'sw' ? 'Tarehe ya Ripoti' : 'Report Date'}:</strong> {todayStr} | <strong>{lang === 'sw' ? 'Mzunguko' : 'Cycle'}:</strong> {lang === 'sw' ? 'Wiki 1 (Siku 1 - 7 imekamilika)' : 'Week 1 (Day 1 - 7 Completed)'}
+                                    <strong>{lang === 'sw' ? 'Tarehe ya Ripoti' : 'Report Date'}:</strong> {todayStr} | <strong>{lang === 'sw' ? 'Mzunguko' : 'Cycle'}:</strong> {lang === 'sw' ? `Siku ya ${currentCycleDay} ya Mzunguko (Siku 1 - 7)` : `Day ${currentCycleDay} of Cycle (Days 1 - 7)`}
                                 </p>
                             </div>
                             
