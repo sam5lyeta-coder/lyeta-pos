@@ -335,14 +335,6 @@ function MainApp() {
                 setCashiersList([]); // Ikiwa na error, inaweka 0 badala ya dummy data
             });
 
-        // Slideshow timer for 5 seconds rotation (10 slides) - only runs on login page
-        let slideInterval = null;
-        if (page === 'login') {
-            slideInterval = setInterval(() => {
-                setBgIndex((prev) => (prev === 10 ? 1 : prev + 1));
-            }, 5000);
-        }
-
         // Dynamic background sync every 500 milliseconds - only runs when logged in
         let interval = null;
         if (page !== 'login') {
@@ -353,7 +345,6 @@ function MainApp() {
         }
 
         return () => {
-            if (slideInterval) clearInterval(slideInterval);
             if (interval) clearInterval(interval);
         };
     }, [page]);
@@ -1041,22 +1032,9 @@ function MainApp() {
         const publicIndex = path.indexOf('/public');
         const basePath = publicIndex !== -1 ? path.substring(0, publicIndex + 7) + '/' : '/';
 
-        const bgImages = [
-            "login-bg-1.jpg",
-            "login-bg-2.jpg",
-            "login-bg-3.jpg",
-            "login-bg-4.jpg",
-            "login-bg-5.jpg",
-            "login-bg-6.jpg",
-            "login-bg-7.jpg",
-            "login-bg-8.jpg",
-            "login-bg-9.jpg",
-            "login-bg-10.jpg"
-        ];
-
         return (
             <div style={{ 
-                backgroundImage: `url('${basePath}${bgImages[bgIndex - 1]}')`, 
+                backgroundImage: `url('${basePath}login-bg.jpg')`, 
                 backgroundSize: 'cover', 
                 backgroundPosition: 'center', 
                 backgroundRepeat: 'no-repeat',
