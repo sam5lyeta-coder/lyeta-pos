@@ -335,20 +335,26 @@ function MainApp() {
                 setCashiersList([]); // Ikiwa na error, inaweka 0 badala ya dummy data
             });
 
-        // Slideshow timer for 5 seconds rotation (10 slides)
-        const slideInterval = setInterval(() => {
-            setBgIndex((prev) => (prev === 10 ? 1 : prev + 1));
-        }, 5000);
+        // Slideshow timer for 5 seconds rotation (10 slides) - only runs on login page
+        let slideInterval = null;
+        if (page === 'login') {
+            slideInterval = setInterval(() => {
+                setBgIndex((prev) => (prev === 10 ? 1 : prev + 1));
+            }, 5000);
+        }
 
-        // Dynamic background sync every 500 milliseconds for real-time updates
-        const interval = setInterval(() => {
-            fetchProducts();
-            fetchBusinessReport();
-        }, 500);
+        // Dynamic background sync every 500 milliseconds - only runs when logged in
+        let interval = null;
+        if (page !== 'login') {
+            interval = setInterval(() => {
+                fetchProducts();
+                fetchBusinessReport();
+            }, 500);
+        }
 
         return () => {
-            clearInterval(slideInterval);
-            clearInterval(interval);
+            if (slideInterval) clearInterval(slideInterval);
+            if (interval) clearInterval(interval);
         };
     }, [page]);
 
@@ -1031,9 +1037,9 @@ function MainApp() {
     const purpleTheme = getThemeForDay(lang);
 
     if (page === 'login') {
-        const basePath = window.location.pathname.endsWith('/') 
-            ? window.location.pathname 
-            : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const path = window.location.pathname;
+        const publicIndex = path.indexOf('/public');
+        const basePath = publicIndex !== -1 ? path.substring(0, publicIndex + 7) + '/' : '/';
 
         const bgImages = [
             "login-bg-1.jpg",
